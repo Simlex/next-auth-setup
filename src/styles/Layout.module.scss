@@ -1,0 +1,7 @@
+@import "./variables";
+@import "./reusables";
+
+.mainContent {
+    background-color: $grey-bg-2;
+    display: flex;
+}
