@@ -7,9 +7,9 @@ export const signUp = async (
   password: string,
   firstName: string,
   lastName: string,
-  phoneNumber: string, 
+  phoneNumber: string | null,
+  imageUrl: string | null
 ) => {
-
   const user = await prisma.user.findUnique({
     where: {
       email,
@@ -28,7 +28,8 @@ export const signUp = async (
       password: passwordHash,
       firstName: firstName,
       lastName: lastName,
-      phoneNumber: phoneNumber
+      phoneNumber: phoneNumber || null,
+      imageUrl: imageUrl || null,
     },
   });
 

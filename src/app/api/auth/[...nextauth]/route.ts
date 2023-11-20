@@ -75,22 +75,22 @@ export const authOptions: AuthOptions = {
           redirect_uri: "http://localhost:3000/api/auth/callback/google", // Make sure this matches the URI in the Google Developer Console
           prompt: "consent",
           access_type: "offline",
-          response_type: "code"
+          response_type: "code",
         },
       },
     }),
     GithubProvider({
-        clientId: process.env.GITHUB_CLIENT_ID as string,
-        clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
-        authorization: {
-          params: {
-            redirect_uri: "http://localhost:3000/api/auth/callback/github",
-            prompt: "consent",
-            access_type: "offline",
-            response_type: "code"
-          },
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+      authorization: {
+        params: {
+          redirect_uri: "http://localhost:3000/api/auth/callback/github",
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code",
         },
-    })
+      },
+    }),
   ],
   pages: {
     signIn: "auth/signin",
