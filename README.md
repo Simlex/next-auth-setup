@@ -7,3 +7,25 @@ This repository serves as a starter template for integrating NextAuth.js with Pr
 - Prisma Database Access: Leverage Prisma for efficient and type-safe database access, ensuring a smooth interaction with your chosen database.
 
 - Customizable Callbacks: Tailor authentication and session behaviors with customizable callbacks, allowing you to update session data and JWT tokens according to your application's requirements.
+
+# Getting Started:
+
+Clone the repository:
+<br />
+=> git clone https://github.com/yourusername/nextauth-prisma-example.git
+
+Install dependencies:
+<br />
+=> cd nextauth-prisma-example
+<br />
+=> npm install
+
+Set up environment variables:
+<br />
+Create a .env file and add your authentication provider credentials and Prisma connection URL.
+
+Run the application:
+<br />
+npm run dev
+
+Finally, open http://localhost:3000 in your browser to see the example in action.
