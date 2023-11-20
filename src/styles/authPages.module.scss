@@ -1,0 +1,57 @@
+@import "./variables";
+@import "./reusables";
+
+.authPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .topArea {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        p {
+            font-size: $font-size-16 - .125rem;
+        }
+    }
+
+    .signupContainer {
+        padding: 1.5rem;
+        margin-top: 1rem;
+        border-radius: 1rem;
+        border: 1px solid rgba($color: $dark-grey-2, $alpha: 0.2);
+        background-color: $white;
+
+        display: flex;
+        flex-direction: column;
+        gap: .75rem;
+
+        p {
+            font-size: $font-size-16 - .125rem;
+        }
+
+        input {
+            width: 18.75rem;
+            padding: .5rem;
+            border-radius: .5rem;
+            outline: none;
+            border: 1px solid rgba($color: $dark-grey-2, $alpha: 0.5);
+            &::placeholder {
+                color: $secondary-color;
+            }
+        }
+        button {
+            @include primary-button;
+            margin: 0 auto;
+        }
+        .socialBtn {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            svg {
+                width: .875rem;
+                height: .875rem;
+            }
+        }
+    }
+}
