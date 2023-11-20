@@ -1,0 +1,58 @@
+@import "./variables";
+@import "./reusables";
+
+.navbarContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include sectionPadding;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background-color: $white;
+    z-index: 2;
+    position: relative;
+    box-shadow: 0rem .25rem .3125rem 0rem rgba(0, 0, 0, 0.05);
+
+    .navLinks {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        a:hover {
+            color: $primary-color;
+        }
+    }
+
+    .rhs {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        .notificationIcon {
+            display: grid;
+            place-items: center;
+            height: 1.625rem;
+            width: 1.625rem;
+        }
+        .accountSection {
+            display: flex;
+            align-items: end;
+            gap: 0.5rem;
+            cursor: pointer;
+            &:hover {
+                opacity: 0.6;
+            }
+            .userImage {
+                height: 2rem;
+                width: 2rem;
+                border-radius: 100%;
+                overflow: hidden;
+                img {
+                    object-fit: cover;
+                }
+            }
+            p {
+                font-size: $font-size-16 - .125rem;
+                transform: translateY(-.15rem);
+            }
+        }
+    }
+}
