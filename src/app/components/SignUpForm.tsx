@@ -16,6 +16,7 @@ const SignUpForm: FunctionComponent<SignUpFormProps> = (): ReactElement => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
 
     const [message, setMessage] = useState('');
     const [globalErrorMessage, setGlobalErrorMessage] = useState(false);
@@ -30,7 +31,7 @@ const SignUpForm: FunctionComponent<SignUpFormProps> = (): ReactElement => {
             return;
         }
 
-        const message = await signUp(email, password, firstName, lastName, phoneNumber);
+        const message = await signUp(email, password, firstName, lastName, phoneNumber, imageUrl);
         if (message.detail == 'User with this email already exist.') {
             console.log(message);
             setMessage(message.detail);
@@ -44,11 +45,11 @@ const SignUpForm: FunctionComponent<SignUpFormProps> = (): ReactElement => {
 
     return (
         <div className={styles.signupContainer}>
-            <input type="text" placeholder="Enter first name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-            <input type="text" placeholder="Enter last name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-            <input type="text" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <input type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <input type="phoneNumber" placeholder="Enter phone number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+            <input type="text" name="first name" placeholder="Enter first name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+            <input type="text" name="last name" placeholder="Enter last name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+            <input type="text" name="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="password" name="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input type="phoneNumber" name="phone number" placeholder="Enter phone number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
             {globalErrorMessage && <p>Please fill in all required fields</p>}
             <button onClick={handleSubmit}>Sign up</button>
             <p>{message}</p>
