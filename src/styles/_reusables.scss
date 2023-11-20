@@ -1,0 +1,649 @@
+@use "./fonts";
+
+// Breakpoints
+@mixin smallLaptop() {
+    @media (max-width: (75rem)) {
+        @content;
+    }
+}
+@mixin bigTablet() {
+    @media (max-width: (56.25rem)) {
+        @content;
+    }
+}
+@mixin tablet() {
+    @media (max-width: (48rem)) {
+        @content;
+    }
+}
+@mixin bigMobilePhone() {
+    @media (max-width: (32.5rem)) {
+        @content;
+    }
+}
+@mixin midSizeMobilePhone() {
+    @media (max-width: (25rem)) {
+        @content;
+    }
+}
+@mixin smallmobilePhone() {
+    @media (max-width: (20rem)) {
+        @content;
+    }
+}
+
+// Animation
+@keyframes slideLeft {
+    from {
+        left: -100%;
+        opacity: 0;
+    }
+}
+@keyframes slideRight {
+    from {
+        right: -100%;
+        opacity: 0;
+    }
+}
+
+// Buttons
+@mixin primary-button {
+    width: fit-content;
+    height: fit-content;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: $font-size-16 - 0.125rem;
+    padding: 0.5rem 1.1rem;
+    border: none;
+    background-color: $primary-color;
+    color: $white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 300ms ease;
+    svg {
+        opacity: 1;
+        color: #fff;
+        width: 0.75rem;
+        path {
+            fill: #fff;
+        }
+    }
+
+    &:hover {
+        gap: 1rem;
+        background-color: $secondary-color;
+        svg {
+            opacity: 1;
+        }
+    }
+}
+@mixin secondary-button {
+    width: fit-content;
+    border-radius: 3.125rem;
+    cursor: pointer;
+    font-size: $font-size-16 - 0.125rem;
+    padding: 0.8rem 1.1rem;
+    border: none;
+    background-color: $primary-color;
+    color: $white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 300ms ease;
+    svg {
+        opacity: 1;
+        color: #fff;
+        width: 0.75rem;
+        path {
+            fill: #fff;
+        }
+    }
+}
+
+// Input field
+@mixin input {
+    width: fit-content;
+    border-radius: 3.125rem;
+    font-size: $font-size-16 - 0.125rem;
+    padding: 0.8rem 1.1rem;
+    border: none;
+    outline: none;
+    background-color: $white;
+    &::placeholder {
+        color: $grey-bg;
+    }
+}
+
+// Animations
+@mixin bumpInFromUpAnimation() {
+    // animation: bumpDown 400ms cubic-bezier(0.91, -0.31, 0.27, 1.55);
+    animation: bumpIn 400ms cubic-bezier(0.65, -0.07, 0.25, 1.24);
+
+    @keyframes bumpIn {
+        from {
+            top: 2.1875rem;
+            opacity: 0;
+        }
+    }
+}
+@mixin bumpOutToUpAnimation {
+    // animation: bumpOut 400ms cubic-bezier(0.65, -0.07, 0.25, 1.24);
+    animation: bumpOut 400ms ease;
+
+    @keyframes bumpOut {
+        to {
+            top: 2rem;
+            opacity: 0;
+        }
+    }
+}
+@mixin fadeInFromUpAnimation($topValue) {
+    animation: fadeIn 1200ms ease;
+
+    @keyframes fadeIn {
+        from {
+            top: $topValue;
+            opacity: 0;
+        }
+    }
+}
+@mixin searchSlideInAnimation {
+    // animation: searchSlideIn 400ms cubic-bezier(0.91, -0.31, 0.27, 1.55);
+    animation: searchSlideIn 400ms cubic-bezier(0.65, -0.07, 0.25, 1.24);
+
+    @keyframes searchSlideIn {
+        from {
+            right: -2.1875rem;
+            opacity: 0;
+        }
+    }
+}
+
+@mixin sectionPadding {
+    padding-left: 24px;
+    padding-right: 24px;
+
+    @media screen and (min-width: 81.25rem) {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    @include tablet() {
+        // padding: $padding-mobile;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@mixin tableContainer {
+    border-radius: 24px;
+    overflow: hidden;
+    width: 100%;
+    table {
+        border: none;
+        width: 100%;
+        border-collapse: collapse;
+        tr {
+            background-color: $white;
+            &:nth-child(odd) {
+                background-color: $primary-color-sub-2;
+            }
+            th,
+            td {
+                padding: 1rem;
+                &:nth-child(1) {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.25rem;
+                }
+                .rowChecker {
+                    position: relative;
+                    background-color: $primary-color-sub;
+                    border-radius: 0.25rem;
+                    scale: 0.85;
+                }
+            }
+            th {
+                background-color: $primary-color;
+                color: $white;
+                font-weight: $fontWeight-500;
+                text-align: left;
+            }
+            td {
+                font-weight: $fontWeight-300;
+                font-size: $font-size-16 - 0.125rem;
+                .initializedTag {
+                    color: $secondary-color;
+                }
+
+                .action {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.25rem;
+
+                    button {
+                        background-color: $primary-color;
+                        padding: 0.5rem 1rem;
+                        color: $white;
+                        border-radius: 24px;
+                        font-size: $font-size-16 - 0.3125rem;
+                        cursor: pointer;
+                        border: none;
+                    }
+                    .deleteIcon {
+                        padding: 0;
+                        display: grid;
+                        place-items: center;
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+    &__pagination {
+        display: flex;
+        justify-content: flex-end;
+        padding: 1.25rem;
+        background-color: $white;
+        font-weight: $fontWeight-500;
+        .control {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            span {
+                width: 1.5rem;
+                height: 1.5rem;
+                background-color: $secondary-color-sub;
+                border-radius: 0.25rem;
+                display: grid;
+                place-items: center;
+                cursor: pointer;
+                &:hover {
+                    background-color: $secondary-color;
+                    svg {
+                        path {
+                            fill: $white;
+                        }
+                    }
+                }
+                svg {
+                    width: 0.75rem;
+                    height: 0.75rem;
+                    path {
+                        fill: $secondary-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin tableDataControlSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    &__lhs {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        .searchInput {
+            input {
+                padding: 0.5rem 1rem;
+                border-radius: 2rem;
+                border: 0.0625rem solid $primary-color;
+                background-color: transparent;
+                outline: none;
+                font-size: $font-size-16 - 0.1875rem;
+            }
+        }
+        .filterSection {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            h4 {
+                font-size: $font-size-16 - 0.125rem;
+                font-weight: $fontWeight-500;
+            }
+            &__container {
+                position: relative;
+                .selected {
+                    padding: 0.625rem 1.25rem;
+                    border-radius: 20px;
+                    background-color: $primary-color-sub-3;
+                    border: 0.0625rem solid $primary-color;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.25rem;
+                    cursor: pointer;
+                }
+                .filterDropdown {
+                    position: absolute;
+                    top: 2.75rem;
+                    opacity: 1;
+                    background-color: $white;
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: 1.25rem;
+                    overflow: hidden;
+                    @include bumpInFromUpAnimation();
+
+                    span {
+                        padding: 1rem 1.25rem;
+                        white-space: nowrap;
+                        text-align: center;
+                        font-weight: $fontWeight-300;
+                        cursor: pointer;
+                        &:hover {
+                            background-color: $primary-color-sub-2;
+                        }
+                    }
+                    .active {
+                        background-color: $primary-color-sub-2;
+                    }
+                }
+                .filterDropdownInvisible {
+                    @extend .filterDropdown;
+                    opacity: 0;
+                    @include bumpOutToUpAnimation();
+                }
+            }
+        }
+    }
+    &__controls {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        .control {
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+            gap: 0.5rem;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            &:hover {
+                color: $secondary-color;
+            }
+            p {
+                font-weight: $fontWeight-300;
+                font-size: $font-size-16 - 0.125rem;
+            }
+        }
+        .btnDisabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    }
+}
+
+@mixin formInputFieldContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    width: 100%;
+
+    .formInputField, .calenderInputField {
+        position: relative;
+        label {
+            position: absolute;
+            color: $primary-color;
+            font-weight: $fontWeight-500;
+            font-size: $font-size-16 - 0.125rem;
+            background-color: $white;
+            padding: 0 0.2rem;
+            top: -0.625rem;
+            left: 1.25rem;
+            z-index: 2;
+        }
+        input,
+        select,
+        textarea {
+            padding: 0.8rem 1.4rem;
+            border: 1px solid $primary-color;
+            font-size: $font-size-16 - 0.25rem;
+            font-weight: $fontWeight-300;
+            border-radius: 1.5rem;
+            width: 100%;
+            outline: none;
+            resize: none;
+        }
+        // select {
+        //     max-width: 50%;
+        // }
+        textarea {
+            width: 100%;
+            min-width: 100%;
+        }
+        & > span {
+            padding: 0.8rem 1.4rem;
+            border: 1px solid $primary-color;
+            font-size: $font-size-16 - 0.25rem;
+            font-weight: $fontWeight-300;
+            border-radius: 1.5rem;
+            width: 100%;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            input,
+            select {
+                padding: 0;
+                width: fit-content;
+                background-color: transparent;
+                border: none;
+            }
+            select {
+                width: 40%;
+            }
+            input {
+                width: 100%;
+            }
+            svg {
+                width: 1rem;
+                height: 1rem;
+            }
+        }
+    }
+}
+
+@mixin h2 {
+    font-size: $font-size-40;
+    line-height: $font-size-40;
+    font-weight: $fontWeight-500;
+    @include tablet {
+        font-size: $font-size-30;
+        text-align: center;
+    }
+    @include smallmobilePhone {
+        font-size: $font-size-20;
+        text-align: center;
+    }
+}
+@mixin header {
+    position: relative;
+    height: fit-content;
+    h2 {
+        @include h2();
+    }
+}
+
+.main {
+    width: 100%;
+    @include sectionPadding();
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+// STYLES ===============
+
+.errorMsg {
+    font-size: 0.75rem;
+    color: #eb485b;
+    display: flex;
+    align-items: center;
+    gap: 0.125rem;
+
+    svg {
+        width: 0.75rem;
+        height: 12x;
+        display: inline-flex;
+        height: fit-content;
+
+        path {
+            fill: #eb485b;
+        }
+    }
+}
+// Custom checkbox style ================
+.checkerContainer {
+    // position: relative;
+
+    .checker {
+        width: 1.125rem;
+        height: 1.125rem;
+        border: 0.0625rem solid #bbbbbb;
+        border-radius: 0.125rem;
+        display: grid;
+        place-items: center;
+    }
+    svg {
+        height: 0.5rem;
+        opacity: 0;
+    }
+
+    input {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 2;
+
+        &:checked ~ .checker {
+            background-color: $secondary-color;
+            border: none;
+            svg {
+                opacity: 1;
+                path {
+                    fill: $white;
+                }
+            }
+        }
+    }
+}
+
+.inactiveBtn {
+    background-color: #cecece;
+    cursor: not-allowed;
+}
+
+.scrollArea {
+    &::-webkit-scrollbar-thumb {
+        background-color: lighten($color: $primary-color, $amount: 40%);
+        border-radius: 0rem;
+        border: 0.1875rem solid transparent;
+        cursor: pointer;
+        &:hover {
+            background-color: $secondary-color;
+        }
+    }
+    &::-webkit-scrollbar {
+        width: 0.5rem;
+        @media screen and (max-width: 48rem) {
+            width: 0.25rem;
+        }
+    }
+    &::-webkit-scrollbar-track {
+        background-color: rgba($primary-color, 0.2);
+    }
+}
+
+.scrollAreaMin {
+    @extend .scrollArea;
+    &::-webkit-scrollbar {
+        width: 0.25rem;
+        @media screen and (max-width: 768p4) {
+            width: 0.125rem;
+        }
+    }
+}
+
+.leftSidebarContainer {
+    width: 100%;
+    height: 100vh;
+    // height: calc(100vh - 3rem);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    // top: 0;
+    z-index: 120;
+    .overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(#000, 0.5);
+        top: 0;
+        left: 0;
+        z-index: 1;
+        cursor: pointer;
+    }
+    .container {
+        background-color: $white;
+        width: 30%;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        z-index: 4;
+        @include tablet {
+            width: 100%;
+            z-index: 120;
+        }
+    }
+
+    animation: slideLeft 640ms cubic-bezier(0.86, 0, 0.07, 1);
+    // animation: slideLeft 640ms cubic-bezier(0.65, -0.07, 0.25, 1.24);
+}
+
+.rightSidebarContainer {
+    width: 100vw;
+    min-width: 100%;
+    height: 100vh;
+    // height: calc(100vh - 3rem);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    // top: 0;
+    z-index: 3;
+    // border: .625rem solid #fff;
+    @include tablet {
+        z-index: 120;
+    }
+
+    .overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(#000, 0.5);
+        top: 0;
+        left: 0;
+        z-index: 1;
+        cursor: pointer;
+    }
+    .container {
+        background-color: $white;
+        width: 80%;
+        height: 100%;
+        right: 0;
+        position: absolute;
+        z-index: 4;
+        display: flex;
+        flex-direction: column;
+        animation: slideRight 640ms cubic-bezier(0.86, 0, 0.07, 1);
+        @include tablet {
+            width: 100%;
+            z-index: 120;
+        }
+    }
+}
